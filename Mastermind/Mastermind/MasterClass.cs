@@ -35,12 +35,16 @@ namespace Mastermind
         {
             
             if ( String.Compare(_CurrentNumber, number)== 0 ) return SecondLine;
-            var firstdigit = _CurrentNumber[0] == number[0] ? '-' : '+';
-            var seconddigit = _CurrentNumber[1] == number[1] ? '-' : '+';
-            var threedigit = _CurrentNumber[2] == number[2] ? '-' : '+';
-            var fourdigit = _CurrentNumber[3] == number[3]  ? '-' : '+';
-            return String.Format("{0}{1}{2}{3}", firstdigit, seconddigit, threedigit, fourdigit);
+            StringBuilder retVal = new StringBuilder();
+            var index = 0;
+            foreach(var digit in number)
+            {
+                retVal.Append(_CurrentNumber[index++] == digit ? '-' : '+');
+            }
+            return retVal.ToString();
         }
+
+         
 
     }
 }

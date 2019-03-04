@@ -19,12 +19,14 @@ namespace Mastermind
             Console.WriteLine("Guess the four digit number");
             do
             {
-                var numberEntered = Console.ReadLine();
-                var comparedNumber = master.CompareNumber(numberEntered);
+                int numberEntered = 0;
+                int.TryParse(Console.ReadLine(), out numberEntered);                
+                var comparedNumber = master.CompareNumber(numberEntered.ToString());
+
                 Console.WriteLine(comparedNumber);
                 if (comparedNumber == master.SecondLine) break;
 
-            } while (totalNumberOfGuess++ < MaxGuess);
+            } while (++totalNumberOfGuess < MaxGuess);
             Console.WriteLine("The correct number is {0}", randomNumber);
         }
 
